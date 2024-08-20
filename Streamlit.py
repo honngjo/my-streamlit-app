@@ -65,7 +65,10 @@ with open(model_e_path, "rb") as f:
 
 FRAME_WINDOW = st.image([])
 camera = cv2.VideoCapture(0)
-
+if not camera.isOpened():
+    st.error("카메라를 열 수 없습니다. 올바른 장치가 연결되었는지 확인하세요.")
+    camera.release()
+    
 # 임시 디렉터리를 사용하도록 설정 (추가된 부분)
 temp_dir = tempfile.gettempdir()
 
@@ -73,7 +76,6 @@ temp_dir = tempfile.gettempdir()
 mp_pose = mp.solutions.pose
 pose = mp_pose.Pose(
     min_detection_confidence=0.5, min_tracking_confidence=0.7, model_complexity=2,
-    model_dir=temp_dir  # 추가된 부분
 )
 
 # 신뢰도 임계값 슬라이더
