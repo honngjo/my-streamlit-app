@@ -3,6 +3,7 @@ torch
 scikit-learn
 opencv_python_headless
 streamli
-mediapipe==0.8.4.2
+mediapipe
 numpy
 Pillow
+python3.9.13
