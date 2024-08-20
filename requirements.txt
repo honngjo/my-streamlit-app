@@ -2,7 +2,7 @@ pandas
 torch
 scikit-learn
 opencv_python_headless
-streamli
+streamlit
 mediapipe
 numpy
 Pillow
