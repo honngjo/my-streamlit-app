@@ -1,9 +1,7 @@
-pandas
-torch
-scikit-learn
-opencv_python_headless
-opencv_contrib_python
 streamlit
+opencv-python-headless
 mediapipe
+torch
+pandas
 numpy
-Pillow
+scikit-learn
