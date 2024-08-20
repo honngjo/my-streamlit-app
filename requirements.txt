@@ -1,9 +1,6 @@
 streamlit
-gluoncv
-mxnet
 numpy
 pandas
 mediapipe
 torch
-pygame
 opencv-python-headless
