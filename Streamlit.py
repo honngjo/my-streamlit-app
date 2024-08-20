@@ -8,7 +8,6 @@ import time
 import torch
 import pickle
 import random
-import tempfile  # 추가된 부분
 
 st.set_page_config(
     page_title="test",
@@ -66,14 +65,10 @@ with open(model_e_path, "rb") as f:
 FRAME_WINDOW = st.image([])
 camera = cv2.VideoCapture(0)
 
-# 임시 디렉터리를 사용하도록 설정 (추가된 부분)
-temp_dir = tempfile.gettempdir()
-
-# Mediapipe Pose 모델 초기화: 최소 감지 신뢰도=0.5, 최소 추적 신뢰도=0.7, 모델 복잡도=2를 준다.
+# Mediapipe Pose 모델 초기화
 mp_pose = mp.solutions.pose
 pose = mp_pose.Pose(
-    min_detection_confidence=0.5, min_tracking_confidence=0.7, model_complexity=2,
-    model_dir=temp_dir  # 추가된 부분
+    min_detection_confidence=0.5, min_tracking_confidence=0.7, model_complexity=2
 )
 
 # 신뢰도 임계값 슬라이더
