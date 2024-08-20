@@ -5,7 +5,6 @@ import pandas as pd
 import mediapipe as mp
 import datetime
 import time
-import pygame
 import torch
 import pickle
 import random
@@ -29,7 +28,6 @@ posture_status = [None]
 def most_frequent(data):
     return max(data, key=data.count)
 
-
 # 각도 계산 함수
 def calculateAngle(a, b, c):
     a = np.array(a)  # 첫 번째 지점
@@ -46,11 +44,8 @@ def calculateAngle(a, b, c):
 
     return angle
 
-
 # Streamlit 앱 초기화
 st.title("test")
-
-pygame.mixer.init()
 
 # Sidebar에 메뉴 추가
 menu_selection = st.selectbox("운동 선택", ("벤치프레스", "스쿼트", "데드리프트"))
@@ -278,8 +273,7 @@ while True:
                             selected_message = selected_option[0]
                             selected_music = selected_option[1]
                             st.error(selected_message)
-                            pygame.mixer.music.load(selected_music)
-                            pygame.mixer.music.play()
+                            st.audio(selected_music)
                             posture_status = []
                             previous_alert_time = current_time
                         elif "arms_spread" in most_frequent(posture_status):
@@ -297,8 +291,7 @@ while True:
                             selected_message = selected_option[0]
                             selected_music = selected_option[1]
                             st.error(selected_message)
-                            pygame.mixer.music.load(selected_music)
-                            pygame.mixer.music.play()
+                            st.audio(selected_music)
                             posture_status = []
                             previous_alert_time = current_time
                         elif "spine_neutral" in most_frequent(posture_status):
@@ -316,8 +309,7 @@ while True:
                             selected_message = selected_option[0]
                             selected_music = selected_option[1]
                             st.error(selected_message)
-                            pygame.mixer.music.load(selected_music)
-                            pygame.mixer.music.play()
+                            st.audio(selected_music)
                             posture_status = []
                             previous_alert_time = current_time
                         elif "caved_in_knees" in most_frequent(posture_status):
@@ -335,33 +327,29 @@ while True:
                             selected_message = selected_option[0]
                             selected_music = selected_option[1]
                             st.error(selected_message)
-                            pygame.mixer.music.load(selected_music)
-                            pygame.mixer.music.play()
+                            st.audio(selected_music)
                             posture_status = []
                             previous_alert_time = current_time
                         elif "feet_spread" in most_frequent(posture_status):
                             st.error(
                                 "어깨 너비 정도로 자세를 좁힙니다."
                             )
-                            pygame.mixer.music.load(
+                            st.audio(
                                 "./resources/sounds/feet_spread.mp3"
                             )
-                            pygame.mixer.music.play()
                             posture_status = []
                             previous_alert_time = current_time
                         elif "arms_narrow" in most_frequent(posture_status):
                             st.error(
                                 "그립이 너무 넓습니다. 바를 조금 더 좁게 잡으세요."
                             )
-                            pygame.mixer.music.load(
+                            st.audio(
                                 "./resources/sounds/arms_narrow.mp3"
                             )
-                            pygame.mixer.music.play()
                             posture_status = []
                             previous_alert_time = current_time
                 elif "correct" in most_frequent(posture_status):
-                    pygame.mixer.music.load("./resources/sounds/correct.mp3")
-                    pygame.mixer.music.play()
+                    st.audio("./resources/sounds/correct.mp3")
                     st.info(
                         "올바른 자세로 운동을 하고 있습니다."
                     )
