@@ -6,4 +6,3 @@ streamli
 mediapipe
 numpy
 Pillow
-python3.9.13
