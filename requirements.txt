@@ -4,3 +4,4 @@ pandas
 mediapipe
 torch
 opencv-python-headless
+scikit-learn
