@@ -3,4 +3,5 @@ numpy
 pandas
 mediapipe
 torch
-opencv-python-headless
+pip uninstall opencv-python
+pip install opencv-python-headless
