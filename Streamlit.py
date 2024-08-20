@@ -75,12 +75,10 @@ temp_dir = tempfile.gettempdir()
 
 # Mediapipe Pose 모델 초기화: 최소 감지 신뢰도=0.5, 최소 추적 신뢰도=0.7, 모델 복잡도=2를 준다.
 mp_pose = mp.solutions.pose
-model_path = './mediapipe/modules/pose_landmark/pose_landmark_heavy.tflite'
 pose = mp_pose.Pose(
     min_detection_confidence=0.5,
     min_tracking_confidence=0.7,
     model_complexity=2,
-    model_asset_path=model_path
 )
 
 # 신뢰도 임계값 슬라이더
