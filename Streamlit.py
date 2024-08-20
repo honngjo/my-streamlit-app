@@ -52,7 +52,6 @@ menu_selection = st.selectbox("운동 선택", ("벤치프레스", "스쿼트", 
 counter_display = st.sidebar.empty()
 counter_display.header(f"현재 카운터: {counter}회")
 
-# 모델 경로 설정
 model_weights_path = {
     "벤치프레스": "./models/benchpress/benchpress.pkl",
     "스쿼트": "./models/squat/squat.pkl",
@@ -60,14 +59,8 @@ model_weights_path = {
 }
 
 model_e_path = model_weights_path.get(menu_selection, "./models/benchpress/benchpress.pkl")
-
-# 모델 로드 시 예외 처리
-try:
-    with open(model_e_path, "rb") as f:
-        model_e = pickle.load(f)
-except Exception as e:
-    st.error(f"모델을 로드하는 중 오류가 발생했습니다: {e}")
-    st.stop()
+with open(model_e_path, "rb") as f:
+    model_e = pickle.load(f)
 
 FRAME_WINDOW = st.image([])
 camera = cv2.VideoCapture(0)
